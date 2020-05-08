@@ -1,0 +1,31 @@
+<h4 class="text-right"> انشاء عمل سابق </h4>
+
+<div class="text-right">
+  <%= form_with model: @task, local: true do |form| %>
+
+    <div class="form-group">
+      <%= form.label :name, 'الاسم*' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'اسم العمل ...' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description, 'الوصف*' %>
+      <%= form.text_area :description, class: 'form-control', placeholder: 'تفاصيل العمل ....' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :url, 'عنوان الموقع' %>
+      <%= form.text_field :url, class: 'form-control', placeholder: 'عنوان الموقع ....' %>
+      <small class="text-muted"> في حاله كان العمل موقع الكتروني او تطبيق للهاتف يمكنك اضافه لينك الموقع او لينك تحميل التطبيق </small>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :company, 'اسم الشركه' %>
+      <%= form.text_field :company, class: 'form-control', placeholder: 'الشركه .....' %>
+    </div>
+
+    <%= form.submit 'انشاء..', class: 'btn btn-success' %>
+
+
+  <% end %>
+</div>

@@ -1,0 +1,33 @@
+<% if tasks.empty? %>
+  <p class="text-muted font-weight-bold text-right">
+    لا يوجد مشاريع بعد هنا .....
+    <%= link_to 'اضافه مشروع', new_task_path %>
+  </p>
+
+<% else %>
+  <% if user == current_user %>
+  <p class="text-right">
+    العدد الكلي <b> <%= user.tasks.count %> </b>
+
+    &nbsp; &nbsp; &nbsp;
+    <u>
+    <%= link_to 'اضافه مشروع جديد من هنا', new_task_path %></u>
+  </p>
+  <hr>
+  <% end %>
+
+
+  <% tasks.each do |task| %>
+    <div class="task">
+      <p class="text-right">
+        <%= link_to task.name, task_path(task) %>
+
+      </p>
+      <p class="lead text-right">
+        <%= truncate(task.description, length: 50, omission: '...') %>
+      </p>
+    </div>
+    <hr>
+  <% end %>
+
+<% end %>

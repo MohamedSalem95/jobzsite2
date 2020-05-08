@@ -1,0 +1,45 @@
+<div class=" row ">
+  <div class="col-7 text-right">
+    <h4 class="text-info"> <%= @task.name %> </h4>
+
+    <p>
+      <%= @task.description %>
+    </p>
+
+    <% if @task.url.nil? %>
+      <p>
+        الموقع : لايوجد
+      </p>
+      <% else %>
+      <p>
+        الموقع: <%= link_to @task.url, @task.url, target: '_blank' %>
+      </p>
+    <% end %>
+
+    <% if @task.company.nil? %>
+      <p>
+        الشركه: لايوجد
+      </p>
+    <% else %>
+      <p class="text-success">
+        الشركه : <b> <%= @task.company %> </b>
+      </p>
+    <% end %>
+    <hr>
+    <%= render 'task_images/task_image_list', images: @task.task_images %>
+    <%= link_to 'اضافه صوره', new_task_task_image_path(@task), class: 'btn btn-outline-success' %>
+
+    <hr>
+    <% if @task.user.image.nil? %>
+      <%= image_tag 'profile.jpg', width: 30, height: 30, class: 'rounded-circle' %>
+      <%= link_to "#{@task.user.first_name} #{@task.user.last_name}", profile_path(@task.user) %>
+    <% else %>
+
+      <%= image_tag @task.user.image.thumb.url, width: 30, height: 30, class: 'border-circle' %>
+    <% end %>
+
+
+
+    <%= time_ago_in_words(@task.created_at) %> ago
+  </div>
+</div>
